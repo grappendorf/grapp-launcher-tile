@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <title>grapp-launcher-tile web component</title>
+
+  <script src="../webcomponentsjs/webcomponents.min.js"></script>
+  <link href="../grapp-fa-icon/grapp-fa-icon.html" rel="import">
+  <link href="grapp-launcher-tile.html" rel="import">
+
+</head>
+
+<body>
+
+  <h1>grapp-launcher-tile web component</h1>
+
+  <h2>This Web Component displays a tile that can for example be used to launch other parts of your application</h2>
+
+  <p>
+    <a href="test/index.html">Click here to run the tests...</a>
+  </p>
+  <p>
+    <a href="README.md">Click here to read the documentation...</a>
+  </p>
+  <p>
+    <a href="CHANGELOG.md">Click here to read the changelog...</a>
+  </p>
+
+  <h2>Demo</h2>
+
+  <polymer-element name="demo-element">
+
+    <template>
+
+      <style>
+        #settings /deep/ #tile {
+          background-color: #63CE80;
+        }
+      </style>
+
+      <div layout horizontal>
+
+        <grapp-launcher-tile id="mail" label="Mail" icon="envelope" on-grapp-launch="{{onLaunch}}">
+          <div>
+            {{numMails}} new Emails
+          </div>
+        </grapp-launcher-tile>
+
+        <grapp-launcher-tile id="contacts" label="Contacts" icon="users" color="#FF7044"
+          on-grapp-launch="{{onLaunch}}"></grapp-launcher-tile>
+
+        <grapp-launcher-tile id="settings" on-grapp-launch="{{onLaunch}}">
+          <div class="title">
+            <grapp-fa-icon icon="wrench"></grapp-fa-icon>
+            Settings
+          </div>
+          <div>
+            Email Configuration
+          </div>
+        </grapp-launcher-tile>
+
+      <div id="messages"></div>
+    </template>
+
+    <script>
+      Polymer('demo-element', {
+        numMails: 0,
+        ready: function(e) {
+          setInterval((function() {
+            this.numMails += 1
+          }).bind(this), 2000);
+        },
+        onLaunch: function(e) {
+          this.$.messages.innerHTML += '<div>Launch: ' + e.detail + '</dv>';
+        }
+      });
+    </script>
+
+  </polymer>
+
+  <demo-element></demo-element>
+
+  <script src="//localhost:35729/livereload.js"></script>
+
+</body>

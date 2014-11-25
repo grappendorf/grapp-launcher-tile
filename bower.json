@@ -1,0 +1,45 @@
+{
+  "name": "grapp-launcher-tile",
+  "description": "This Web Component displays a tile that can for example be used to launch other parts of your application",
+  "version": "0.0.0",
+  "main": "grapp-launcher-tile.html",
+  "license": "MIT",
+  "ignore": [
+    "bin",
+    "build",
+    "lib",
+    "node_modules",
+    "src",
+    "test",
+    "tmpl",
+    "package.json",
+    "**/.*",
+    "**/*.log",
+    "**/*.sublime-*"
+  ],
+  "keywords": [
+    "web-components",
+    "polymer",
+    "coyoho",
+    "grappendorf"
+  ],
+  "authors": [
+    "Dirk Grappendorf <dirk@grappendorf.net> (http://www.grappendorf.net)"
+  ],
+  "homepage": "https://github.com/grappendorf/grapp-launcher-tile",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/grappendorf/grapp-launcher-tile.git"
+  },
+  "dependencies": {
+    "polymer": "Polymer/polymer#^0.5.1",
+    "paper-shadow": "Polymer/paper-shadow#^0.5.1"
+  },
+  "devDependencies": {
+    "coffee-script": "latest",
+    "jquery": "latest",
+    "web-component-tester": "Polymer/web-component-tester#latest",
+    "happen": "latest",
+    "grapp-fa-icon": "latest"
+  }
+}

@@ -1,0 +1,44 @@
+ <!-- build:process -->
+<!--
+<%= copyright %>
+Element: <%= pkg.name %>
+Version: <%= pkg.version %>
+Description: <%= pkg.description %>
+-->
+<!-- /build -->
+
+<link href="../paper-shadow/paper-shadow.html" rel="import">
+
+<polymer-element name="grapp-launcher-tile" attributes="name icon label color">
+
+  <template>
+
+    <!-- build:style inline dist -->
+    <link href="grapp-launcher-tile.css" rel="stylesheet">
+    <!-- /build -->
+
+    <paper-shadow  id="shadow" class="card" z="1">
+      <div id="tile" mouseOver?="{{mouseOver}}" vertical center center-justified layout
+           on-mouseenter="{{mouseEnter}}" on-mouseleave="{{mouseLeave}}" on-click="{{launch}}">
+        <div id="title">
+          <template if="{{icon}}">
+            <grapp-fa-icon icon="{{icon}}"></grapp-fa-icon>
+          </template>
+          <template if="{{label}}">
+            {{label}}
+          </template>
+          <content select=".title"></content>
+        </div>
+        <div id="info">
+          <content></content>
+        </div>
+      </div>
+    </paper-shadow>
+
+  </template>
+
+  <!-- build:script inline dist -->
+  <script src="grapp-launcher-tile.js"></script>
+  <!-- /build -->
+
+</polymer-element>

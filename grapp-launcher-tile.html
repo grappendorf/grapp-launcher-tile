@@ -1,0 +1,88 @@
+<!--
+Copyright (c) 2014 Dirk Grappendorf, www.grappendorf.net. All rights reserved.
+This code may only be used under the MIT style license found in the file LICENSE.txt.
+
+Element: grapp-launcher-tile
+Version: 0.0.0
+Description: This Web Component displays a tile that can for example be used to launch other parts of your application
+-->
+
+
+<link href="../paper-shadow/paper-shadow.html" rel="import">
+
+<polymer-element name="grapp-launcher-tile" attributes="name icon label color">
+
+    <template>
+
+        <style>
+            #tile {
+                width: 10em;
+                height: 10em;
+                padding: 1em;
+                text-align: center;
+                color: #fff;
+                background-color: #4285F4;
+                border-radius: 4px;
+                -webkit-transition: text-shadow 0.5s ease;
+                transition: text-shadow 0.5s ease;
+                cursor: default;
+            }
+            #tile #title {
+                font-size: 200%;
+            }
+            #tile[mouseOver] #title {
+                text-shadow: 0px 0px 5px #fff;
+            }
+            #shadow {
+                margin: 8px;
+                border-radius: 4px;
+            }
+        </style>
+
+        <paper-shadow id="shadow" class="card" z="1">
+            <div id="tile" mouseOver?="{{mouseOver}}" vertical center center-justified layout on-mouseenter="{{mouseEnter}}" on-mouseleave="{{mouseLeave}}" on-click="{{launch}}">
+                <div id="title">
+                    <template if="{{icon}}">
+                        <grapp-fa-icon icon="{{icon}}"></grapp-fa-icon>
+                    </template>
+                    <template if="{{label}}">
+                        {{label}}
+                    </template>
+                    <content select=".title"></content>
+                </div>
+                <div id="info">
+                    <content></content>
+                </div>
+            </div>
+        </paper-shadow>
+
+    </template>
+
+    <script type="text/javascript">
+        (function() {
+            Polymer('grapp-launcher-tile', {
+                created: function() {
+                    this.name = this.getAttribute('id');
+                    return this.mouseOver = false;
+                },
+                colorChanged: function() {
+                    return this.$.tile.style['background-color'] = this.color;
+                },
+                mouseEnter: function() {
+                    this.$.shadow.setZ(2);
+                    return this.mouseOver = true;
+                },
+                mouseLeave: function() {
+                    this.$.shadow.setZ(1);
+                    return this.mouseOver = false;
+                },
+                launch: function(e) {
+                    e.stopPropagation();
+                    return this.fire('grapp-launch', this.name);
+                }
+            });
+
+        }).call(this);
+    </script>
+
+</polymer-element>
