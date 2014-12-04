@@ -32,6 +32,13 @@ Attributes
     - *type:* string
     - *default:* ''
 
+    Displays a *core-icon* next to the label. You also need to import *core-icon.html*.
+
+  * **faicon**
+
+    - *type:* string
+    - *default:* ''
+
     Displays a *grapp-fa-icon* next to the label. You also need to import *grapp-fa-icon.html*.
 
   * **color**
@@ -43,6 +50,14 @@ Attributes
     CSS *background-color* property:
 
     `#tileelem /deep/ #title { background-color: red }`
+
+  * **glow**
+
+    - *type:* CSS styling attribute
+    - *default:* Disabled
+
+    If you add the *glow* attribute to a *grapp-launcher-tile*, the icon and text will be displayed
+    in glowing style, when the tile is hovered with the mouse.
 
 Events
 ======

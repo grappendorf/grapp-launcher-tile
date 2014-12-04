@@ -9,7 +9,7 @@ Description: <%= pkg.description %>
 
 <link href="../paper-shadow/paper-shadow.html" rel="import">
 
-<polymer-element name="grapp-launcher-tile" attributes="name icon label color">
+<polymer-element name="grapp-launcher-tile" attributes="name icon faicon label color">
 
   <template>
 
@@ -21,16 +21,19 @@ Description: <%= pkg.description %>
       <div id="tile" mouseOver?="{{mouseOver}}" vertical center center-justified layout
            on-mouseenter="{{mouseEnter}}" on-mouseleave="{{mouseLeave}}" on-click="{{launch}}">
         <div id="title">
+          <template if="{{faicon}}">
+            <grapp-fa-icon icon="{{faicon}}"></grapp-fa-icon>
+          </template>
           <template if="{{icon}}">
-            <grapp-fa-icon icon="{{icon}}"></grapp-fa-icon>
+            <core-icon icon="{{icon}}"></core-icon>
           </template>
           <template if="{{label}}">
             {{label}}
           </template>
-          <content select=".title"></content>
+          <content select="[title]"></content>
         </div>
         <div id="info">
-          <content></content>
+          <content select="[info]"></content>
         </div>
       </div>
     </paper-shadow>

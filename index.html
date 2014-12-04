@@ -6,6 +6,8 @@
   <title>grapp-launcher-tile web component</title>
 
   <script src="../webcomponentsjs/webcomponents.min.js"></script>
+  <link href="../core-icon/core-icon.html" rel="import">
+  <link href="../core-icons/core-icons.html" rel="import">
   <link href="../grapp-fa-icon/grapp-fa-icon.html" rel="import">
   <link href="grapp-launcher-tile.html" rel="import">
 
@@ -29,6 +31,8 @@
 
   <h2>Demo</h2>
 
+  <p>Click on the tiles!</p>
+
   <polymer-element name="demo-element">
 
     <template>
@@ -41,24 +45,26 @@
 
       <div layout horizontal>
 
-        <grapp-launcher-tile id="mail" label="Mail" icon="envelope" on-grapp-launch="{{onLaunch}}">
-          <div>
+        <grapp-launcher-tile id="mail" label="Mail" icon="mail" on-grapp-launch="{{onLaunch}}">
+          <div info>
             {{numMails}} new Emails
           </div>
         </grapp-launcher-tile>
 
-        <grapp-launcher-tile id="contacts" label="Contacts" icon="users" color="#FF7044"
+        <grapp-launcher-tile id="contacts" glow label="Contacts" faicon="users" color="#FF7044"
           on-grapp-launch="{{onLaunch}}"></grapp-launcher-tile>
 
         <grapp-launcher-tile id="settings" on-grapp-launch="{{onLaunch}}">
-          <div class="title">
+          <div title>
             <grapp-fa-icon icon="wrench"></grapp-fa-icon>
             Settings
           </div>
-          <div>
+          <div info>
             Email Configuration
           </div>
         </grapp-launcher-tile>
+
+      </div>
 
       <div id="messages"></div>
     </template>

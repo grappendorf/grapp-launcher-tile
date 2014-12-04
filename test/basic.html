@@ -17,12 +17,14 @@
 
   <grapp-launcher-tile id="withIconAttribute" icon="icon"></grapp-launcher-tile>
 
+  <grapp-launcher-tile id="withFaIconAttribute" faicon="icon"></grapp-launcher-tile>
+
   <grapp-launcher-tile id="withTitleDOM">
-    <div class="title">Title</div>
+    <div title>Title</div>
   </grapp-launcher-tile>
 
   <grapp-launcher-tile id="withInfoDOM">
-    <div>Info</div>
+    <div info>Info</div>
   </grapp-launcher-tile>
 
   <grapp-launcher-tile id="withColorAttribute" color="red"></grapp-launcher-tile>
@@ -37,8 +39,14 @@
 
     describe 'when an icon attribute is specified', ->
 
-      it 'should contain a title with a grapp-fa-icon', ->
+      it 'should contain a title with a core-icon', ->
         element = document.querySelector '#withIconAttribute'
+        expect(element.shadowRoot.querySelector('core-icon').getAttribute('icon')).to.equal 'icon'
+
+    describe 'when a faicon attribute is specified', ->
+
+      it 'should contain a title with a grapp-fa-icon', ->
+        element = document.querySelector '#withFaIconAttribute'
         expect(element.shadowRoot.querySelector('grapp-fa-icon').getAttribute('icon')).to.equal 'icon'
 
     describe 'when a title is given as a light DOM elment', ->
@@ -52,7 +60,7 @@
 
       it 'should contain the light DOM information', ->
         element = document.querySelector '#withInfoDOM'
-        infoContent = element.shadowRoot.querySelector('#info content').getDistributedNodes()[1]
+        infoContent = element.shadowRoot.querySelector('#info content').getDistributedNodes()[0]
         expect(infoContent.textContent).to.equal 'Info'
 
     describe 'when a color attribute is specified', ->
