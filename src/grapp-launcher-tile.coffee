@@ -8,7 +8,7 @@ Polymer 'grapp-launcher-tile',
     @$.tile.style['background-color'] = @color
 
   mouseEnter: ->
-    @$.shadow.setZ 2
+    @$.shadow.setZ 3
     @mouseOver = true
 
   mouseLeave: ->
