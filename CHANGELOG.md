@@ -1,3 +1,12 @@
+<a name="0.0.3"></a>
+### 0.0.3 (2014-12-12)
+
+
+#### Bug Fixes
+
+* Set mouseover z depth to 3 ([d41a98cd](http://github.com/grappendorf/grapp-launcher-tile/commit/d41a98cdc1df1c370a35661ecea8a20b33fdd6a0))
+
+
 <a name="0.0.2"></a>
 ### 0.0.2 (2014-12-04)
 
