@@ -1,4 +1,4 @@
- <!-- build:process -->
+<!-- build:process -->
 <!--
 <%= copyright %>
 Element: <%= pkg.name %>
@@ -7,36 +7,37 @@ Description: <%= pkg.description %>
 -->
 <!-- /build -->
 
-<link href="../paper-shadow/paper-shadow.html" rel="import">
+<link href="../lib/paper-material/paper-material.html" rel="import">
 
-<polymer-element name="grapp-launcher-tile" attributes="name icon faicon label color">
+<dom-module id="grapp-launcher-tile">
+
+  <!-- build:style inline dist -->
+  <link href="grapp-launcher-tile.css" rel="stylesheet">
+  <!-- /build -->
+
+  <link href="../lib/iron-flex-layout/classes/iron-flex-layout.html" rel="import">
 
   <template>
 
-    <!-- build:style inline dist -->
-    <link href="grapp-launcher-tile.css" rel="stylesheet">
-    <!-- /build -->
-
-    <paper-shadow  id="shadow" class="card" z="1">
-      <div id="tile" mouseOver?="{{mouseOver}}" vertical center center-justified layout
-           on-mouseenter="{{mouseEnter}}" on-mouseleave="{{mouseLeave}}" on-click="{{launch}}">
-        <div id="title">
-          <template if="{{faicon}}">
-            <grapp-fa-icon icon="{{faicon}}"></grapp-fa-icon>
-          </template>
-          <template if="{{icon}}">
-            <core-icon icon="{{icon}}"></core-icon>
-          </template>
-          <template if="{{label}}">
-            {{label}}
-          </template>
-          <content select="[title]"></content>
-        </div>
-        <div id="info">
-          <content select="[info]"></content>
-        </div>
+    <paper-material id="tile" class="layout vertical center-justified"
+                    elevation="1" mouse-over$="[[_mouseOver]]"
+                    on-mouseenter="_mouseEnter" on-mouseleave="_mouseLeave" on-tap="_launch">
+      <div id="title">
+        <template is="dom-if" if="[[faicon]]">
+          <grapp-fa-icon icon="[[faicon]]"></grapp-fa-icon>
+        </template>
+        <template is="dom-if" if="[[icon]]">
+          <iron-icon icon="[[icon]]"></iron-icon>
+        </template>
+        <template is="dom-if" if="[[label]]">
+          <span>[[label]]</span>
+        </template>
+        <content select="[title]"></content>
       </div>
-    </paper-shadow>
+      <div id="info">
+        <content select="[info]"></content>
+      </div>
+    </paper-material>
 
   </template>
 
@@ -44,4 +45,4 @@ Description: <%= pkg.description %>
   <script src="grapp-launcher-tile.js"></script>
   <!-- /build -->
 
-</polymer-element>
+</dom-module>

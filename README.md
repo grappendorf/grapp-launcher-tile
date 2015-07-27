@@ -10,7 +10,10 @@ light DOM element with class *title*.
 
 You can specify an info line by passing additional light DOM elements.
 
-Attributes
+Compatible with Polymer 1.0+
+
+
+Properties
 ==========
 
   * **name**
@@ -20,12 +23,14 @@ Attributes
 
     This name will be sent as the event detail of the *grapp-launch* event.
 
+
   * **label**
 
     - *type:* string
     - *default:* ''
 
     Will be displayed in the title area of the tile.
+
 
   * **icon**
 
@@ -34,12 +39,14 @@ Attributes
 
     Displays a *core-icon* next to the label. You also need to import *core-icon.html*.
 
+
   * **faicon**
 
     - *type:* string
     - *default:* ''
 
     Displays a *grapp-fa-icon* next to the label. You also need to import *grapp-fa-icon.html*.
+
 
   * **color**
 
@@ -51,6 +58,7 @@ Attributes
 
     `#tileelem /deep/ #title { background-color: red }`
 
+
   * **glow**
 
     - *type:* CSS styling attribute
@@ -58,6 +66,7 @@ Attributes
 
     If you add the *glow* attribute to a *grapp-launcher-tile*, the icon and text will be displayed
     in glowing style, when the tile is hovered with the mouse.
+
 
 Events
 ======

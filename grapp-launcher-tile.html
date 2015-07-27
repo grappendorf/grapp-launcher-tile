@@ -1,6 +1,6 @@
- 
+
 <!--
-Copyright (c) 2014 Dirk Grappendorf, www.grappendorf.net. All rights reserved.
+Copyright (c) 2014-2015 Dirk Grappendorf, www.grappendorf.net. All rights reserved.
 This code may only be used under the MIT style license found in the file LICENSE.txt.
 
 Element: grapp-launcher-tile
@@ -9,16 +9,15 @@ Description: This Web Component displays a tile that can for example be used to 
 -->
 
 
-<link href="../paper-shadow/paper-shadow.html" rel="import">
+<link href="../paper-material/paper-material.html" rel="import">
 
-<polymer-element name="grapp-launcher-tile" attributes="name icon faicon label color">
-
-  <template>
+<dom-module id="grapp-launcher-tile">
 
 <style>#tile {
   width: 12em;
   height: 12em;
   padding: 1em;
+  margin: 8px;
   text-align: center;
   color: #fff;
   background-color: #4285F4;
@@ -30,56 +29,74 @@ Description: This Web Component displays a tile that can for example be used to 
 #tile #title {
   font-size: 200%;
 }
-:host([glow]) #tile[mouseOver] #title {
+:host([glow]) #tile[mouse-over] #title {
   text-shadow: 0px 0px 5px #fff;
-}
-#shadow {
-  margin: 8px;
-  border-radius: 4px;
 }
 </style>
 
-    <paper-shadow  id="shadow" class="card" z="1">
-      <div id="tile" mouseOver?="{{mouseOver}}" vertical center center-justified layout
-           on-mouseenter="{{mouseEnter}}" on-mouseleave="{{mouseLeave}}" on-click="{{launch}}">
-        <div id="title">
-          <template if="{{faicon}}">
-            <grapp-fa-icon icon="{{faicon}}"></grapp-fa-icon>
-          </template>
-          <template if="{{icon}}">
-            <core-icon icon="{{icon}}"></core-icon>
-          </template>
-          <template if="{{label}}">
-            {{label}}
-          </template>
-          <content select="[title]"></content>
-        </div>
-        <div id="info">
-          <content select="[info]"></content>
-        </div>
+  <link href="../iron-flex-layout/classes/iron-flex-layout.html" rel="import">
+
+  <template>
+
+    <paper-material id="tile" class="layout vertical center-justified"
+                    elevation="1" mouse-over$="[[_mouseOver]]"
+                    on-mouseenter="_mouseEnter" on-mouseleave="_mouseLeave" on-tap="_launch">
+      <div id="title">
+        <template is="dom-if" if="[[faicon]]">
+          <grapp-fa-icon icon="[[faicon]]"></grapp-fa-icon>
+        </template>
+        <template is="dom-if" if="[[icon]]">
+          <iron-icon icon="[[icon]]"></iron-icon>
+        </template>
+        <template is="dom-if" if="[[label]]">
+          <span>[[label]]</span>
+        </template>
+        <content select="[title]"></content>
       </div>
-    </paper-shadow>
+      <div id="info">
+        <content select="[info]"></content>
+      </div>
+    </paper-material>
 
   </template>
 
 <script type="text/javascript">(function() {
-  Polymer('grapp-launcher-tile', {
-    created: function() {
+  Polymer({
+    is: 'grapp-launcher-tile',
+    properties: {
+      name: {
+        type: String
+      },
+      icon: {
+        type: String
+      },
+      faicon: {
+        type: String
+      },
+      label: {
+        type: String
+      },
+      color: {
+        type: String,
+        observer: '_colorChanged'
+      }
+    },
+    ready: function() {
       this.name = this.getAttribute('id');
       return this.mouseOver = false;
     },
-    colorChanged: function() {
+    _colorChanged: function() {
       return this.$.tile.style['background-color'] = this.color;
     },
-    mouseEnter: function() {
-      this.$.shadow.setZ(3);
+    _mouseEnter: function() {
+      this.$.tile.elevation = 3;
       return this.mouseOver = true;
     },
-    mouseLeave: function() {
-      this.$.shadow.setZ(1);
+    _mouseLeave: function() {
+      this.$.tile.elevation = 1;
       return this.mouseOver = false;
     },
-    launch: function(e) {
+    _launch: function(e) {
       e.stopPropagation();
       return this.fire('grapp-launch', this.name);
     }
@@ -88,4 +105,4 @@ Description: This Web Component displays a tile that can for example be used to 
 }).call(this);
 </script>
 
-</polymer-element>
+</dom-module>

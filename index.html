@@ -2,15 +2,13 @@
 <html>
 
 <head>
-
   <title>grapp-launcher-tile web component</title>
-
-  <script src="../webcomponentsjs/webcomponents.min.js"></script>
-  <link href="../core-icon/core-icon.html" rel="import">
-  <link href="../core-icons/core-icons.html" rel="import">
-  <link href="../grapp-fa-icon/grapp-fa-icon.html" rel="import">
-  <link href="grapp-launcher-tile.html" rel="import">
-
+  <script src='lib/webcomponentsjs/webcomponents-lite.min.js'></script>
+  <link href="lib/iron-icon/iron-icon.html" rel="import">
+  <link href="lib/iron-icons/iron-icons.html" rel="import">
+  <link href="lib/iron-flex-layout/classes/iron-flex-layout.html" rel="import">
+  <link href="lib/grapp-fa-icon/grapp-fa-icon.html" rel="import">
+  <link href="build/grapp-launcher-tile.html" rel="import">
 </head>
 
 <body>
@@ -33,7 +31,7 @@
 
   <p>Click on the tiles!</p>
 
-  <polymer-element name="demo-element">
+  <dom-module id="demo-element">
 
     <template>
 
@@ -43,18 +41,18 @@
         }
       </style>
 
-      <div layout horizontal>
+      <div class="layout horizontal">
 
-        <grapp-launcher-tile id="mail" label="Mail" icon="mail" on-grapp-launch="{{onLaunch}}">
+        <grapp-launcher-tile id="mail" label="Mail" icon="mail" on-grapp-launch="onLaunch">
           <div info>
-            {{numMails}} new Emails
+            <span>[[numMails]]</span> new Emails
           </div>
         </grapp-launcher-tile>
 
         <grapp-launcher-tile id="contacts" glow label="Contacts" faicon="users" color="#FF7044"
-          on-grapp-launch="{{onLaunch}}"></grapp-launcher-tile>
+          on-grapp-launch="onLaunch"></grapp-launcher-tile>
 
-        <grapp-launcher-tile id="settings" on-grapp-launch="{{onLaunch}}">
+        <grapp-launcher-tile id="settings" color="#70AA44" on-grapp-launch="onLaunch">
           <div title>
             <grapp-fa-icon icon="wrench"></grapp-fa-icon>
             Settings
@@ -70,8 +68,11 @@
     </template>
 
     <script>
-      Polymer('demo-element', {
-        numMails: 0,
+      Polymer({
+        is: 'demo-element',
+        properties: {
+          numMails: {type: Number, value: 0}
+        },
         ready: function(e) {
           setInterval((function() {
             this.numMails += 1
@@ -83,7 +84,7 @@
       });
     </script>
 
-  </polymer>
+  </dom-module>
 
   <demo-element></demo-element>
 

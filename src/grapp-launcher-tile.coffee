@@ -1,20 +1,29 @@
-Polymer 'grapp-launcher-tile',
+Polymer
 
-  created: ->
+  is: 'grapp-launcher-tile'
+
+  properties:
+    name: {type: String}
+    icon: {type: String}
+    faicon: {type: String}
+    label: {type: String}
+    color: {type: String, observer: '_colorChanged'}
+
+  ready: ->
     @name = @getAttribute('id')
     @mouseOver = false
 
-  colorChanged: ->
+  _colorChanged: ->
     @$.tile.style['background-color'] = @color
 
-  mouseEnter: ->
-    @$.shadow.setZ 3
+  _mouseEnter: ->
+    @$.tile.elevation = 3
     @mouseOver = true
 
-  mouseLeave: ->
-    @$.shadow.setZ 1
+  _mouseLeave: ->
+    @$.tile.elevation = 1
     @mouseOver = false
 
-  launch: (e) ->
+  _launch: (e) ->
     e.stopPropagation()
     @fire 'grapp-launch', @name

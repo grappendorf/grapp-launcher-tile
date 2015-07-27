@@ -6,10 +6,11 @@
   <title>grapp-launcher-tile basic tests</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
+  <script src='../lib/webcomponentsjs/webcomponents-lite.min.js'></script>
   <script src="../lib/web-component-tester/browser.js"></script>
   <script src="../lib/coffee-script/extras/coffee-script.js"></script>
 
-  <link href="../grapp-launcher-tile.html" rel="import">
+  <link href="../build/grapp-launcher-tile.html" rel="import">
 </head>
 <body>
 
@@ -39,39 +40,34 @@
 
     describe 'when an icon attribute is specified', ->
 
-      it 'should contain a title with a core-icon', ->
+      it 'should contain a title with an iron-icon', ->
         element = document.querySelector '#withIconAttribute'
-        expect(element.shadowRoot.querySelector('core-icon').getAttribute('icon')).to.equal 'icon'
+        expect(element.querySelector('iron-icon').icon).to.equal 'icon'
 
     describe 'when a faicon attribute is specified', ->
 
       it 'should contain a title with a grapp-fa-icon', ->
         element = document.querySelector '#withFaIconAttribute'
-        expect(element.shadowRoot.querySelector('grapp-fa-icon').getAttribute('icon')).to.equal 'icon'
+        expect(element.querySelector('grapp-fa-icon').icon).to.equal 'icon'
 
     describe 'when a title is given as a light DOM elment', ->
 
       it 'should contain the light DOM title', ->
         element = document.querySelector '#withTitleDOM'
-        titleContent = element.shadowRoot.querySelector('#title content').getDistributedNodes()[0]
-        expect(titleContent.textContent).to.equal 'Title'
+        expect(element.querySelector('#title').textContent.trim()).to.equal 'Title'
 
     describe 'when additional information is given as a light DOM elment', ->
 
       it 'should contain the light DOM information', ->
         element = document.querySelector '#withInfoDOM'
-        infoContent = element.shadowRoot.querySelector('#info content').getDistributedNodes()[0]
-        expect(infoContent.textContent).to.equal 'Info'
+        expect(element.querySelector('#info').textContent.trim()).to.equal 'Info'
 
     describe 'when a color attribute is specified', ->
 
       it 'should set the CSS background-color property', ->
         element = document.querySelector '#withColorAttribute'
-        expect(element.$.tile.style['background-color']).to.equal 'red'
+        expect(element.querySelector('#tile').style['background-color']).to.equal 'red'
 
-  </script>
-
-  <script>
   </script>
 
 </body>
