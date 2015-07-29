@@ -10,7 +10,7 @@ Polymer
     color: {type: String, observer: '_colorChanged'}
 
   ready: ->
-    @name = @getAttribute('id')
+    @name = @getAttribute('id') unless @name
     @mouseOver = false
 
   _colorChanged: ->

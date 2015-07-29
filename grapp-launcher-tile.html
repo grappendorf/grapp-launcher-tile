@@ -82,7 +82,9 @@ Description: This Web Component displays a tile that can for example be used to 
       }
     },
     ready: function() {
-      this.name = this.getAttribute('id');
+      if (!this.name) {
+        this.name = this.getAttribute('id');
+      }
       return this.mouseOver = false;
     },
     _colorChanged: function() {
