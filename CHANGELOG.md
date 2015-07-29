@@ -1,3 +1,12 @@
+<a name="0.1.1"></a>
+### 0.1.1 (2015-07-29)
+
+
+#### Bug Fixes
+
+* Only use id attribute if no name is specified ([d9054890](http://github.com/grappendorf/grapp-launcher-tile/commit/d90548906b31dc1b610124077e1632b6ba840696))
+
+
 <a name="0.1.0"></a>
 ## 0.1.0 (2015-07-27)
 
