@@ -31,16 +31,16 @@
     "url": "git://github.com/grappendorf/grapp-launcher-tile.git"
   },
   "dependencies": {
-    "polymer": "Polymer/polymer#~1.0.0",
-    "paper-material": "PolymerElements/paper-material#~1.0.1"
+    "polymer": "Polymer/polymer#^1.0.0",
+    "paper-material": "PolymerElements/paper-material#^1.0.1"
   },
   "devDependencies": {
+    "coffee-script": "^1.10.0",
+    "jquery": "^2.1.4",
+    "happen": "^0.2.0",
     "web-component-tester": "Polymer/web-component-tester#3.1.7",
-    "jquery": "2.1.4",
-    "coffee-script": "1.9.3",
-    "happen": "0.1.3",
-    "iron-icon": "PolymerElements/iron-icon#~1.0.2",
-    "iron-icons": "PolymerElements/iron-icons#~1.0.3",
-    "grapp-fa-icon": "grapp-fa-icon#~0.1.0"
+    "iron-icon": "PolymerElements/iron-icon#^1.0.2",
+    "iron-icons": "PolymerElements/iron-icons#^1.0.3",
+    "grapp-fa-icon": "grapp-fa-icon#^0.1.0"
   }
 }
