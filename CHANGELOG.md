@@ -1,3 +1,12 @@
+<a name="0.1.3"></a>
+### 0.1.3 (2015-09-17)
+
+
+#### Bug Fixes
+
+* workaround: wct currently expects to find some bower components in the "componen ([b3000f45](http://github.com/grappendorf/grapp-launcher-tile/commit/b3000f4570e2711566e2c6e247d9773bea37d42d))
+
+
 <a name="0.1.2"></a>
 ### 0.1.2 (2015-09-09)
 
