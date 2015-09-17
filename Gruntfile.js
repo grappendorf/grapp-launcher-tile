@@ -55,10 +55,10 @@ module.exports = function(grunt) {
         dest: './build/',
         options: {
           scripts: {
-            dist: ['build/*.js']
+            'grapp-launcher-tile': ['build/grapp-launcher-tile.js']
           },
           styles: {
-            dist: ['build/*.css']
+            'grapp-launcher-tile': ['build/grapp-launcher-tile.css']
           },
           data: {
             copyright: grunt.file.read('tmpl/copyright.tmpl')

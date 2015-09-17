@@ -7,17 +7,15 @@ Description: <%= pkg.description %>
 -->
 <!-- /build -->
 
-<link href="../lib/paper-material/paper-material.html" rel="import">
+<link rel="import" href="../lib/paper-material/paper-material.html">
 
 <dom-module id="grapp-launcher-tile">
 
-  <!-- build:style inline dist -->
-  <link href="grapp-launcher-tile.css" rel="stylesheet">
-  <!-- /build -->
-
-  <link href="../lib/iron-flex-layout/classes/iron-flex-layout.html" rel="import">
-
   <template>
+
+    <!-- build:style inline grapp-launcher-tile -->
+    <link href="grapp-launcher-tile.css" rel="stylesheet">
+    <!-- /build -->
 
     <paper-material id="tile" class="layout vertical center-justified"
                     elevation="1" mouse-over$="[[_mouseOver]]"
@@ -41,7 +39,7 @@ Description: <%= pkg.description %>
 
   </template>
 
-  <!-- build:script inline dist -->
+  <!-- build:script inline grapp-launcher-tile -->
   <script src="grapp-launcher-tile.js"></script>
   <!-- /build -->
 

@@ -4,11 +4,12 @@
 <head>
   <title>grapp-launcher-tile web component</title>
   <script src='lib/webcomponentsjs/webcomponents-lite.min.js'></script>
-  <link href="lib/iron-icon/iron-icon.html" rel="import">
-  <link href="lib/iron-icons/iron-icons.html" rel="import">
-  <link href="lib/iron-flex-layout/classes/iron-flex-layout.html" rel="import">
-  <link href="lib/grapp-fa-icon/grapp-fa-icon.html" rel="import">
-  <link href="build/grapp-launcher-tile.html" rel="import">
+  <link rel="import" href="lib/polymer/polymer.html">
+  <link rel="import" href="lib/iron-icon/iron-icon.html">
+  <link rel="import" href="lib/iron-icons/iron-icons.html">
+  <link rel="import" href="lib/iron-flex-layout/classes/iron-flex-layout.html">
+  <link rel="import" href="lib/grapp-fa-icon/grapp-fa-icon.html">
+  <link rel="import" href="build/grapp-launcher-tile.html">
 </head>
 
 <body>
@@ -68,19 +69,21 @@
     </template>
 
     <script>
-      Polymer({
-        is: 'demo-element',
-        properties: {
-          numMails: {type: Number, value: 0}
-        },
-        ready: function(e) {
-          setInterval((function() {
-            this.numMails += 1
-          }).bind(this), 2000);
-        },
-        onLaunch: function(e) {
-          this.$.messages.innerHTML += '<div>Launch: ' + e.detail + '</dv>';
-        }
+      HTMLImports.whenReady(function () {
+        Polymer({
+          is: 'demo-element',
+          properties: {
+            numMails: {type: Number, value: 0}
+          },
+          ready: function(e) {
+            setInterval((function() {
+              this.numMails += 1
+            }).bind(this), 2000);
+          },
+          onLaunch: function(e) {
+            this.$.messages.innerHTML += '<div>Launch: ' + e.detail + '</dv>';
+          }
+        });
       });
     </script>
 
