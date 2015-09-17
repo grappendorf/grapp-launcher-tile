@@ -15,7 +15,7 @@ module.exports = function(grunt) {
 
     copy: {
       options: {
-        processContent: function (content, srcpath) {
+        processContent: function(content, srcpath) {
           return grunt.template.process(content);
         }
       },
@@ -110,16 +110,23 @@ module.exports = function(grunt) {
         updateConfigs: ['pkg'],
         commit: true,
         commitFiles: ['-a'],
-        commitMessage:'Bump version number to %VERSION%',
+        commitMessage: 'Bump version number to %VERSION%',
         createTag: true,
         tagName: '%VERSION%',
-        tagMessage:'Version %VERSION%',
+        tagMessage: 'Version %VERSION%',
         push: false
       }
     },
 
     changelog: {
-      options: {
+      options: {}
+    },
+
+    'wct-test': {
+      local: {
+        options: {
+          remote: false
+        }
       }
     },
 
@@ -142,29 +149,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-html-build');
   grunt.loadNpmTasks('grunt-shell');
   grunt.loadNpmTasks('grunt-text-replace');
+  grunt.loadNpmTasks('web-component-tester');
 
   grunt.registerTask('build', 'Compile all assets and create the distribution files',
-    ['less', 'coffeelint', 'coffee', 'htmlbuild', 'replace']);
-
-  grunt.registerTask('wct-test', function() {
-    var
-        done = this.async(),
-        wct = require('web-component-tester'),
-        options = {
-          remote: false,
-          persistent: false,
-          root: '.',
-          plugins: {
-            local: {
-              browsers: ['chrome']
-            }
-          }
-        };
-    wct.test(options, function() {
-      done();
-      process.exit(0);
-    });
-  });
+      ['less', 'coffeelint', 'coffee', 'htmlbuild', 'replace']);
 
   grunt.registerTask('test', 'Test the web application', ['shell:test']);
 
@@ -177,6 +165,6 @@ module.exports = function(grunt) {
   });
 
   grunt.registerTask('default', 'Build the software, start a web server and watch for changes',
-    ['build', 'connect', 'watch']
+      ['build', 'connect', 'watch']
   );
 };
