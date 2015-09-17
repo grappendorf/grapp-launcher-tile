@@ -39,6 +39,7 @@
     "jquery": "^2.1.4",
     "happen": "^0.2.0",
     "web-component-tester": "Polymer/web-component-tester#3.3.21",
+    "test-fixture": "PolymerElements/test-fixture#^1.0.0",
     "iron-icon": "PolymerElements/iron-icon#^1.0.2",
     "iron-icons": "PolymerElements/iron-icons#^1.0.3",
     "grapp-fa-icon": "grapp-fa-icon#^0.1.0"

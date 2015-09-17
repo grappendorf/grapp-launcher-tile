@@ -5,67 +5,97 @@
   <meta charset="UTF-8">
   <title>grapp-launcher-tile basic tests</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-
   <script src='../lib/webcomponentsjs/webcomponents-lite.min.js'></script>
   <script src="../lib/web-component-tester/browser.js"></script>
+  <script src="../lib/test-fixture/test-fixture-mocha.js"></script>
   <script src="../lib/coffee-script/extras/coffee-script.js"></script>
-
-  <link href="../build/grapp-launcher-tile.html" rel="import">
+  <link rel="import" href="../lib/test-fixture/test-fixture.html">
+  <link rel="import" href="../build/grapp-launcher-tile.html">
 </head>
 <body>
 
-  <grapp-launcher-tile id="withLabelAttribute" label="label"></grapp-launcher-tile>
+  <test-fixture id="withLabelAttribute">
+    <template>
+      <grapp-launcher-tile label="label"></grapp-launcher-tile>
+    </template>
+  </test-fixture>
 
-  <grapp-launcher-tile id="withIconAttribute" icon="icon"></grapp-launcher-tile>
+  <test-fixture id="withIconAttribute">
+    <template>
+      <grapp-launcher-tile icon="icon"></grapp-launcher-tile>
+    </template>
+  </test-fixture>
 
-  <grapp-launcher-tile id="withFaIconAttribute" faicon="icon"></grapp-launcher-tile>
+  <test-fixture id="withFaIconAttribute">
+    <template>
+      <grapp-launcher-tile faicon="icon"></grapp-launcher-tile>
+    </template>
+  </test-fixture>
 
-  <grapp-launcher-tile id="withTitleDOM">
-    <div title>Title</div>
-  </grapp-launcher-tile>
+  <test-fixture id="withTitleDOM">
+    <template>
+      <grapp-launcher-tile>
+        <div title>Title</div>
+      </grapp-launcher-tile>
+    </template>
+  </test-fixture>
 
-  <grapp-launcher-tile id="withInfoDOM">
-    <div info>Info</div>
-  </grapp-launcher-tile>
+  <test-fixture id="withInfoDOM">
+    <template>
+      <grapp-launcher-tile>
+        <div info>Info</div>
+      </grapp-launcher-tile>
+    </template>
+  </test-fixture>
 
-  <grapp-launcher-tile id="withColorAttribute" color="red"></grapp-launcher-tile>
+  <test-fixture id="withColorAttribute">
+    <template>
+      <grapp-launcher-tile color="red"></grapp-launcher-tile>
+    </template>
+  </test-fixture>
 
   <script type="text/coffeescript">
 
     describe 'when a label attribute is specified', ->
 
-      it 'should contain a title with the label attribute', ->
-        element = document.querySelector '#withLabelAttribute'
-        expect(element.$.title.textContent).to.match /label/
+      it 'should contain a title with the label attribute', (done) ->
+        element = fixture 'withLabelAttribute'
+        flush ->
+          expect(element.$$('#title').textContent).to.match /label/
+          done()
 
     describe 'when an icon attribute is specified', ->
 
-      it 'should contain a title with an iron-icon', ->
-        element = document.querySelector '#withIconAttribute'
-        expect(element.querySelector('iron-icon').icon).to.equal 'icon'
+      it 'should contain a title with an iron-icon', (done) ->
+        element = fixture 'withIconAttribute'
+        flush ->
+          expect(element.querySelector('iron-icon').icon).to.equal 'icon'
+          done()
 
     describe 'when a faicon attribute is specified', ->
 
-      it 'should contain a title with a grapp-fa-icon', ->
-        element = document.querySelector '#withFaIconAttribute'
-        expect(element.querySelector('grapp-fa-icon').icon).to.equal 'icon'
+      it 'should contain a title with a grapp-fa-icon', (done) ->
+        element = fixture 'withFaIconAttribute'
+        flush ->
+          expect(element.querySelector('grapp-fa-icon').icon).to.equal 'icon'
+          done()
 
     describe 'when a title is given as a light DOM elment', ->
 
       it 'should contain the light DOM title', ->
-        element = document.querySelector '#withTitleDOM'
+        element = fixture 'withTitleDOM'
         expect(element.querySelector('#title').textContent.trim()).to.equal 'Title'
 
     describe 'when additional information is given as a light DOM elment', ->
 
       it 'should contain the light DOM information', ->
-        element = document.querySelector '#withInfoDOM'
+        element = fixture 'withInfoDOM'
         expect(element.querySelector('#info').textContent.trim()).to.equal 'Info'
 
     describe 'when a color attribute is specified', ->
 
       it 'should set the CSS background-color property', ->
-        element = document.querySelector '#withColorAttribute'
+        element = fixture 'withColorAttribute'
         expect(element.querySelector('#tile').style['background-color']).to.equal 'red'
 
   </script>

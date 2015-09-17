@@ -5,24 +5,28 @@
   <meta charset="UTF-8">
   <title>grapp-launcher-tile interaction tests</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-
   <script src='../lib/webcomponentsjs/webcomponents-lite.min.js'></script>
   <script src="../lib/web-component-tester/browser.js"></script>
+  <script src="../lib/test-fixture/test-fixture-mocha.js"></script>
   <script src="../lib/coffee-script/extras/coffee-script.js"></script>
   <script src="../lib/happen/happen.js"></script>
-
-  <link href="../build/grapp-launcher-tile.html" rel="import">
+  <link rel="import" href="../lib/test-fixture/test-fixture.html">
+  <link rel="import" href="../build/grapp-launcher-tile.html">
 </head>
 <body>
 
-  <grapp-launcher-tile id="tile"></grapp-launcher-tile>
+  <test-fixture id="element">
+    <template>
+      <grapp-launcher-tile id="tile"></grapp-launcher-tile>
+    </template>
+  </test-fixture>
 
   <script type="text/coffeescript">
 
     describe 'when the mouse is clicked over the tile', ->
 
       it 'should fire a grapp-launch event', (done) ->
-        element = document.querySelector '#tile'
+        element = fixture 'element'
         element.addEventListener 'grapp-launch', (e) ->
           expect(e.detail).to.equal 'tile'
           done()
