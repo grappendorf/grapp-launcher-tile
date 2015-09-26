@@ -1,3 +1,12 @@
+<a name="0.1.4"></a>
+### 0.1.4 (2015-09-27)
+
+
+#### Bug Fixes
+
+* mouse-over attribute on #tile doesn't reflect property value ([b82e9e09](http://github.com/grappendorf/grapp-launcher-tile/commit/b82e9e090dd1c624ace4b2c349afcc0741f9222a))
+
+
 <a name="0.1.3"></a>
 ### 0.1.3 (2015-09-17)
 
