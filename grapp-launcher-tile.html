@@ -83,18 +83,18 @@ Description: This Web Component displays a tile that can for example be used to 
       if (!this.name) {
         this.name = this.getAttribute('id');
       }
-      return this.mouseOver = false;
+      return this._mouseOver = false;
     },
     _colorChanged: function() {
       return this.$.tile.style['background-color'] = this.color;
     },
     _mouseEnter: function() {
       this.$.tile.elevation = 3;
-      return this.mouseOver = true;
+      return this._mouseOver = true;
     },
     _mouseLeave: function() {
       this.$.tile.elevation = 1;
-      return this.mouseOver = false;
+      return this._mouseOver = false;
     },
     _launch: function(e) {
       e.stopPropagation();

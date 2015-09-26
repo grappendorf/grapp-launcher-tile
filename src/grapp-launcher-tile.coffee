@@ -11,18 +11,18 @@ Polymer
 
   ready: ->
     @name = @getAttribute('id') unless @name
-    @mouseOver = false
+    @_mouseOver = false
 
   _colorChanged: ->
     @$.tile.style['background-color'] = @color
 
   _mouseEnter: ->
     @$.tile.elevation = 3
-    @mouseOver = true
+    @_mouseOver = true
 
   _mouseLeave: ->
     @$.tile.elevation = 1
-    @mouseOver = false
+    @_mouseOver = false
 
   _launch: (e) ->
     e.stopPropagation()
